@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:if="${product!=null}">
+    <p th:text ="${product.name}"/>
+    <p th:text ="${product.description}"/>
+    <h3>Wszystkie komentarze</h3>
+    <p th:text="${comments}"/>
+    <h3>Dodaj  nowy kometarz</h3>
+    <form action="/products/addComment" method="post">
+        <input type="hidden" name="productId" th:value="${product.id}"/>
+        <h5>Treść komentarza:</h5>
+        <textarea type="text" name="commentBody"></textarea>
+        <br>
+        <input type="submit" value="Dodaj komentarz">
+    </form>
+
+
+</div>
+
+<p th:if="${product == null}">
+    Przepraszamy, ale nie znaleźliśmy produktu, którego szukasz:(
+
+
+</p>
+</body>
+</html>
